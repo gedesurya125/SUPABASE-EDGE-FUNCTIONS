@@ -1,4 +1,4 @@
-import { createClient, SupabaseClient } from "supabase";
+import { SupabaseClient } from "supabase";
 import { getUrlParams } from "../_shared/getUrlParams.ts";
 import { getSupabaseClient } from "../_shared/getSupabaseClient.ts";
 
