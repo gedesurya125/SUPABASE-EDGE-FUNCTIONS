@@ -4,32 +4,13 @@ import {
   assertEquals,
   assertExists,
 } from "https://deno.land/std@0.192.0/testing/asserts.ts";
-import {
-  createClient,
-  SupabaseClient,
-} from "https://esm.sh/@supabase/supabase-js@2.7.1";
+import { SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2.7.1";
 import { delay } from "https://deno.land/x/delay@v0.2.0/mod.ts";
+import { getTestSupabaseClient } from "./_shared/getTestSupabaseClient.ts";
 
-// Set up the configuration for the Supabase client
-const supabaseUrl = Deno.env.get("LOCAL_SUPABASE_URL") ?? "";
-const supabaseKey = Deno.env.get("LOCAL_SUPABASE_ANON_KEY") ?? "";
-const options = {
-  //this prevent test leaks error
-  auth: {
-    autoRefreshToken: false,
-    persistSession: false,
-    detectSessionInUrl: false,
-  },
-  global: {
-    headers: { Authorization: `Bearer ${supabaseKey}` },
-  },
-};
-
-// Test the 'hello-world' function
 const testHelloWorld = async () => {
-  var client: SupabaseClient = createClient(supabaseUrl, supabaseKey, options);
-
-  console.log("this is the local supabase", { supabaseUrl, supabaseKey });
+  // var client: SupabaseClient = createClient(supabaseUrl, supabaseKey, options);
+  var client: SupabaseClient = getTestSupabaseClient();
 
   // Invoke the 'hello-world' function with a parameter
   const { data: func_data, error: func_error } = await client.functions.invoke(
