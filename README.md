@@ -19,5 +19,4 @@ COMAND:
 3. `supabase stop --no-backup` to stop the supabase stack local services
 4. `supabase functions new hello-world` to create a new function
 5. `supabase functions serve --env-file ./supabase/.env` to start the Function watcher with env file loaded
-6. `deno test --allow-all supabase/functions/tests/customers-test.ts --env=supabase/functions/.env` to run the test
-7. `deno test --allow-all --env=supabase/functions/.env` to run the test
+6. `deno test --allow-all --env=supabase/functions/.env` to run the test
